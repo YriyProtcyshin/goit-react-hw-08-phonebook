@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 
 import { NavLink } from 'react-router-dom';
 
-export const LoginPage = () => {
+export const SignUp = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,9 +36,18 @@ export const LoginPage = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Registration
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="username"
+            label="User Name"
+            name="username"
+            autoComplete="username"
+          />
           <TextField
             margin="normal"
             required
@@ -47,7 +56,6 @@ export const LoginPage = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
           />
           <TextField
             margin="normal"
@@ -66,11 +74,11 @@ export const LoginPage = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Registration
           </Button>
 
-          <Link component={NavLink} to="/signup" variant="body2">
-            {"Don't have an account? Sign Up"}
+          <Link component={NavLink} to="/login" variant="body2" sx={{ mt: 3 }}>
+            {'Already have an account? Sign In'}
           </Link>
         </Box>
       </Box>
