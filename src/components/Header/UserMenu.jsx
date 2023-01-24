@@ -8,10 +8,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 const settings = ['Logout', 'Settings'];
-const avatar_id = 2222;
+const avatar_id = 1234;
 
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
