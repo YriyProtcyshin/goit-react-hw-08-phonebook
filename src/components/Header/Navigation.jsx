@@ -1,19 +1,21 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-
 import { Link } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Badge from '@mui/material/Badge';
-// import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
+  const contacts = useSelector(state => state.contacts);
+  // const countOfContacts = contacts;
+  console.log(contacts);
   const handleOpenNavMenu = event => {
     setAnchorElNav(event.currentTarget);
   };
@@ -68,7 +70,7 @@ export const Navigation = () => {
       </Box>
 
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-        <Badge color="secondary" badgeContent={99}>
+        <Badge color="secondary" badgeContent={10}>
           <Button
             component={NavLink}
             to="/"
