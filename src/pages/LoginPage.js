@@ -8,17 +8,22 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
 import { NavLink } from 'react-router-dom';
+import { logIn } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    dispatch(
+      logIn({
+        email: data.get('email'),
+        password: data.get('password'),
+      })
+    );   
   };
 
   return (

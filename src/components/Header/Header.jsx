@@ -7,7 +7,7 @@ import { UserMenu } from './UserMenu';
 export const Header = () => {
   return (
     <AppBar position="static">
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Toolbar disableGutters>
           <Navigation />
           <UserMenu />
