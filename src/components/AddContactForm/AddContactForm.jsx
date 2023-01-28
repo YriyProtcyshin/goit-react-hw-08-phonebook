@@ -1,17 +1,20 @@
 import { useForm } from 'react-hook-form';
-
-const onSubmit = ({ name, number }) => {
-  //   dispatch(addContact({ name, number }));
-  console.log('gfg');
-};
+import { useDispatch } from 'react-redux';
+import { addContactOperation } from 'redux/contacts/operation';
 
 export const AddContactForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
+
+  const onSubmit = ({ name, number }) => {
+    dispatch(addContactOperation({ name, number }));
+    console.log('form:', name, number);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
