@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./auth/slicer";
+import { configureStore } from '@reduxjs/toolkit';
+import { authReducer } from './auth/slicer';
 
 export const store = configureStore({
-    reducer: {
-        auth: authReducer,
-        contacts: ""
-    }
-})
+  reducer: {
+    auth: authReducer,
+    contacts: '',
+  },
+});
