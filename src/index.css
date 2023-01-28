@@ -14,3 +14,7 @@ a.active:hover {
     background: white;
     color: #1876d2;
 }
+.MuiBadge-badge{
+  top:10px !important;
+}
+

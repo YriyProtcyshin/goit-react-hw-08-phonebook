@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addContactOperation } from './operation';
+import { addContactOperation, getAllContacts } from './operation';
 
 const initialState = {
   contacts: [],
@@ -16,6 +16,11 @@ const contactsSlicer = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    [getAllContacts.fulfilled](state, action) {
+      state.contacts = action.payload
+      state.isLoading = false;
+      state.error = null;
+    }
   },
 });
 

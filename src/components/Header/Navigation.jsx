@@ -6,21 +6,10 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
+import Badge from '@mui/material/Badge';
+// import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
-// const pages = ['Contacts', 'Add contact'];
-const pages = [
-  {
-    title: 'Contacts',
-    path: "/"
-  },
-  {
-    title: 'Add contact',
-    path: "/addcontact"
-  }
-]
 
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -34,10 +23,7 @@ export const Navigation = () => {
   };
 
   return (
-    <>
-      <ContactPhoneRoundedIcon
-        sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-      />
+    <>     
       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
         <IconButton
           size="large"
@@ -66,29 +52,41 @@ export const Navigation = () => {
           sx={{
             display: { xs: 'block', md: 'none' },
           }}
-        >
-          {pages.map(({title, path}) => (
-            <MenuItem key={title} onClick={handleCloseNavMenu}>
-              <Link component={NavLink} to={path} textAlign="center">{title}</Link>
+        >      
+          
+          
+            <MenuItem onClick={handleCloseNavMenu}>
+              <Link component={NavLink} to='/' textAlign="center">Contacts</Link>
             </MenuItem>
-          ))}
+         
+
+          <MenuItem onClick={handleCloseNavMenu}>
+              <Link component={NavLink} to='/addcontact' textAlign="center">Add Contact</Link>
+          </MenuItem>
+
         </Menu>
       </Box>
 
-      <ContactPhoneRoundedIcon
-        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-      />
+     
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-        {pages.map(({title, path}) => (
-          <Button
-            key={title}
-            component={NavLink} to={path}
+        <Badge color="secondary" badgeContent={99}  classes={'badge'} >
+         <Button            
+            component={NavLink} to="/"
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
-            {title}
+            Contacts
+        </Button>
+          </Badge>
+        <Button            
+            component={NavLink} to="/addcontact"
+            onClick={handleCloseNavMenu}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            Add Contacts
           </Button>
-        ))}
+
+
       </Box>
     </>
   );

@@ -1,68 +1,53 @@
-import SearchIcon from '@mui/icons-material/Search';
+import { getAllContacts } from 'redux/contacts/operation';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Box,  Grid, Avatar } from '@mui/material';
 
-import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
 
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  border: '1px solid #1876d2;',
-  marginTop: '10px',
-  borderRadius: '4px',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `50px`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '30ch',
-      },
-    },
-  },
-}));
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: '5px 5px',
-  color: '#1876d2',
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const handleChange = e => {
-  console.log(e.currentTarget.value);
-};
 
 export const Contacts = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllContacts());
+  }, [dispatch]);
+
+  const contacts = useSelector(state => state.contacts.contacts);
+
+  console.log(contacts);
+
   return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ 'aria-label': 'search' }}
-        onChange={handleChange}
-      />
-    </Search>
+    <>
+      {contacts.map(({ name, number }) => (
+        <Box key={name} sx={{ flexGrow: 1 }}>
+          <Grid container spacing={1}>
+            <Grid xs={6} md={2}>
+              <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">
+                R
+              </Avatar>
+            </Grid>
+            <Grid xs={6} md={7}>
+              {name}
+            </Grid>
+            <Grid xs={6} md={3}>
+              {number}
+            </Grid>
+          </Grid>
+        </Box>
+      ))}
+    </>
   );
 };
+
+//  <Card>
+//    <CardHeader
+//      avatar={
+//        <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">
+//          R
+//        </Avatar>
+//      }
+//      title={name}
+//      subheader={number}
+//    />
+//  </Card>;
