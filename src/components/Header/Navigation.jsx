@@ -1,14 +1,26 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
+import {Link} from "@mui/material"
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const pages = ['Contacts', 'Add contact'];
+// const pages = ['Contacts', 'Add contact'];
+const pages = [
+  {
+    title: 'Contacts',
+    path: "/"
+  },
+  {
+    title: 'Add contact',
+    path: "/addcontact"
+  }
+]
 
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -55,9 +67,9 @@ export const Navigation = () => {
             display: { xs: 'block', md: 'none' },
           }}
         >
-          {pages.map(page => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">{page}</Typography>
+          {pages.map(({title, path}) => (
+            <MenuItem key={title} onClick={handleCloseNavMenu}>
+              <Link component={NavLink} to={path} textAlign="center">{title}</Link>
             </MenuItem>
           ))}
         </Menu>
@@ -67,13 +79,14 @@ export const Navigation = () => {
         sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
       />
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-        {pages.map(page => (
+        {pages.map(({title, path}) => (
           <Button
-            key={page}
+            key={title}
+            component={NavLink} to={path}
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
-            {page}
+            {title}
           </Button>
         ))}
       </Box>
