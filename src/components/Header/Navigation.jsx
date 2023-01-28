@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
-import {Link} from "@mui/material"
+import { Link } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
@@ -23,7 +23,7 @@ export const Navigation = () => {
   };
 
   return (
-    <>     
+    <>
       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
         <IconButton
           size="large"
@@ -52,41 +52,40 @@ export const Navigation = () => {
           sx={{
             display: { xs: 'block', md: 'none' },
           }}
-        >      
-          
-          
-            <MenuItem onClick={handleCloseNavMenu}>
-              <Link component={NavLink} to='/' textAlign="center">Contacts</Link>
-            </MenuItem>
-         
-
+        >
           <MenuItem onClick={handleCloseNavMenu}>
-              <Link component={NavLink} to='/addcontact' textAlign="center">Add Contact</Link>
+            <Link component={NavLink} to="/" textAlign="center">
+              Contacts
+            </Link>
           </MenuItem>
 
+          <MenuItem onClick={handleCloseNavMenu}>
+            <Link component={NavLink} to="/addcontact" textAlign="center">
+              Add Contact
+            </Link>
+          </MenuItem>
         </Menu>
       </Box>
 
-     
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-        <Badge color="secondary" badgeContent={99}  classes={'badge'} >
-         <Button            
-            component={NavLink} to="/"
+        <Badge color="secondary" badgeContent={99}>
+          <Button
+            component={NavLink}
+            to="/"
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
             Contacts
-        </Button>
-          </Badge>
-        <Button            
-            component={NavLink} to="/addcontact"
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-          >
-            Add Contacts
           </Button>
-
-
+        </Badge>
+        <Button
+          component={NavLink}
+          to="/addcontact"
+          onClick={handleCloseNavMenu}
+          sx={{ my: 2, color: 'white', display: 'block' }}
+        >
+          Add Contacts
+        </Button>
       </Box>
     </>
   );

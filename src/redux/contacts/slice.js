@@ -17,10 +17,10 @@ const contactsSlicer = createSlice({
       state.error = null;
     },
     [getAllContacts.fulfilled](state, action) {
-      state.contacts = action.payload
+      state.contacts = action.payload;
       state.isLoading = false;
       state.error = null;
-    }
+    },
   },
 });
 

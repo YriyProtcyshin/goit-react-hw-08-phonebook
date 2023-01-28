@@ -2,19 +2,18 @@
 
 body {
   margin: 0;
-} 
+}
 
-a.active{
+a.active {
   border: 1px solid;
   background: white;
   color: #1876d2;
 }
 a.active:hover {
   border: 1px solid;
-    background: white;
-    color: #1876d2;
+  background: white;
+  color: #1876d2;
 }
-.MuiBadge-badge{
-  top:10px !important;
+.MuiBadge-badge {
+  top: 14px !important;
 }
-
