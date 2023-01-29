@@ -6,18 +6,24 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { logOut } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
-const settings = ['Logout', 'Settings'];
 const avatar_id = 1234;
 
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
   const handleOpenUserMenu = event => {
     setAnchorElUser(event.currentTarget);
+  };
+  const handleLogout = () => {
+    dispatch(logOut());
   };
   return (
     <>
@@ -46,11 +52,11 @@ export const UserMenu = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          {settings.map(setting => (
-            <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">{setting}</Typography>
-            </MenuItem>
-          ))}
+          <MenuItem onClick={handleCloseUserMenu}>
+            <Typography textAlign="center" onClick={handleLogout}>
+              Logout
+            </Typography>
+          </MenuItem>
         </Menu>
       </Box>
     </>

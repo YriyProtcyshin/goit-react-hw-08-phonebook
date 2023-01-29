@@ -24,7 +24,7 @@ export const AddContactForm = () => {
           <TextField
             variant="outlined"
             label="Name"
-            autofocus
+            autoFocus
             {...register('name', {
               required: 'Name is required',
               maxLength: 80,
@@ -32,11 +32,10 @@ export const AddContactForm = () => {
           />
         </Box>
         <p>{errors.name?.message}</p>
-        <Box mt={5} mb={5}>
+        <Box mt={3} mb={5}>
           <TextField
             variant="outlined"
             label="Phome number"
-            autofocus
             {...register('number', {
               required: 'Phone number is required',
               minLength: {
