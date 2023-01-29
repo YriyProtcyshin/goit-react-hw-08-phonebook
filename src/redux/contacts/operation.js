@@ -16,12 +16,23 @@ export const addContactOperation = createAsyncThunk(
 );
 
 export const getAllContacts = createAsyncThunk('contacts/getContacts', async (credentials, thunkAPI) => {
-   try {
-     const res = await axios.get('/contacts');
-     return res.data;
-   } catch (e) {
-     return thunkAPI.rejectWithValue(e.message);
-   }
+  try {
+    const res = await axios.get('/contacts');
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
 }
- 
-)
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (id, thunkAPI) => {
+    try {
+      const res = await axios.delete(`/contacts/${id}`)
+      return res.data
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

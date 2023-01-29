@@ -13,9 +13,9 @@ import { useSelector } from 'react-redux';
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
-  const contacts = useSelector(state => state.contacts);
-  // const countOfContacts = contacts;
-  console.log(contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
+  const countOfContacts = contacts.length;
+  
   const handleOpenNavMenu = event => {
     setAnchorElNav(event.currentTarget);
   };
@@ -70,7 +70,7 @@ export const Navigation = () => {
       </Box>
 
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-        <Badge color="secondary" badgeContent={10}>
+        <Badge color="secondary" badgeContent={countOfContacts}>
           <Button
             component={NavLink}
             to="/"
