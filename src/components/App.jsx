@@ -7,17 +7,20 @@ import { AddTaskPage } from 'pages/AddTaskPage';
 import { PrivateRoute } from '../components/PrivateRoute';
 import { RestrictedRoute } from '../components/RestrictedRoute';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 
 export const App = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(refreshUser())
-  }, [dispatch])
-  
-  
-  return (
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route

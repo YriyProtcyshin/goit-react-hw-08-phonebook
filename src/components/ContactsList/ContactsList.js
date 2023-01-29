@@ -6,10 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-import css from "./ContactsList.module.css"
-import { deleteContact } from "redux//contacts/operation" 
-
-
+import css from './ContactsList.module.css';
+import { deleteContact } from 'redux//contacts/operation';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
@@ -18,20 +16,29 @@ export const Contacts = () => {
     dispatch(getAllContacts());
   }, [dispatch]);
 
+  const filter = useSelector(state => state.filter);
   const contacts = useSelector(state => state.contacts.contacts);
 
-  const handleDelete = (id) => {
-    dispatch(deleteContact(id))
-  }
+  const filteredContact = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const handleDelete = id => {
+    dispatch(deleteContact(id));
+  };
+
+  const getAvatar = name => {
+    return name.slice(0, 1).toUpperCase() + name.slice(1, 2).toLowerCase();
+  };
 
   return (
     <Box sx={{ pt: 5 }}>
-      {contacts.map(({ id, name, number }) => (
-        <Paper elevation={2} className={css.item} key={ name}>
+      {filteredContact.map(({ id, name, number }) => (
+        <Paper elevation={2} className={css.item} key={name}>
           <Grid container spacing={1} key={name} sx={{ alignItems: 'center' }}>
             <Grid item xs={1} md={1}>
               <Avatar className={css.avatar} aria-label="recipe">
-                Ta
+                {getAvatar(name)}
               </Avatar>
             </Grid>
             <Grid item xs={3} md={4}>
@@ -55,7 +62,7 @@ export const Contacts = () => {
                 color="error"
                 variant="contained"
                 startIcon={<DeleteIcon />}
-                onClick={() => handleDelete({id})}
+                onClick={() => handleDelete({ id })}
               >
                 Delete
               </Button>

@@ -1,8 +1,7 @@
-import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 
-const Search = styled('div')(({ theme }) => ({
+export const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -17,7 +16,7 @@ const Search = styled('div')(({ theme }) => ({
   },
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   border: '1px solid #1876d2;',
   marginTop: '10px',
   borderRadius: '4px',
@@ -35,7 +34,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+export const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: '5px 5px',
   color: '#1876d2',
   height: '100%',
@@ -45,25 +44,3 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
 }));
-
-
-
-export const SearchField = () => {
-
-    const handleChange = e => {
-    console.log(e.currentTarget.value);
-    };
-
-  return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ 'aria-label': 'search' }}
-        onChange={handleChange}
-      />
-    </Search>
-  );
-};
