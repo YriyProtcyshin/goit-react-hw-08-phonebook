@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { addContactOperation } from 'redux/contacts/operation';
+import { TextField, Box, Button } from '@mui/material';
+import { Container } from '@mui/material';
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
 
@@ -17,38 +18,42 @@ export const AddContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <p>Name</p>
-      <input
-        type="text"
-        placeholder="name"
-        {...register('name', {
-          required: 'Name is required',
-          maxLength: 80,
-        })}
-      />
-      <p>{errors.name?.message}</p>
-
-      <p>Number</p>
-      <input
-        type="tel"
-        placeholder="Mobile number"
-        {...register('number', {
-          required: 'Phone number is required',
-          minLength: {
-            value: 8,
-            message: 'Phone number must be between 8 and 10 numbers ',
-          },
-          maxLength: {
-            value: 10,
-            message: 'Phone number must be between 8 and 10 numbers ',
-          },
-        })}
-      />
-
-      <p>{errors.number?.message}</p>
-
-      <button type="submit">Add contact</button>
-    </form>
+    <Container maxWidth="xs">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Box mt={5}>
+          <TextField
+            variant="outlined"
+            label="Name"
+            autofocus
+            {...register('name', {
+              required: 'Name is required',
+              maxLength: 80,
+            })}
+          />
+        </Box>
+        <p>{errors.name?.message}</p>
+        <Box mt={5} mb={5}>
+          <TextField
+            variant="outlined"
+            label="Phome number"
+            autofocus
+            {...register('number', {
+              required: 'Phone number is required',
+              minLength: {
+                value: 8,
+                message: 'Phone number must be between 8 and 10 numbers ',
+              },
+              maxLength: {
+                value: 10,
+                message: 'Phone number must be between 8 and 10 numbers ',
+              },
+            })}
+          />
+        </Box>
+        <Button type="submit" variant="contained" color="primary">
+          Add Contact
+        </Button>
+      </form>
+    </Container>
   );
 };
