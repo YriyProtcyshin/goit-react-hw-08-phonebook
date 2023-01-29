@@ -7,12 +7,13 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { logOut } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const avatar_id = 1234;
 
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const name = useSelector(state => state.auth.user.name);
 
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ export const UserMenu = () => {
         <Tooltip title="User menu">
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar
-              alt="Remy Sharp"
+              alt={name}
               src={`https://i.pravatar.cc/150?u=${avatar_id}`}
             />
           </IconButton>
