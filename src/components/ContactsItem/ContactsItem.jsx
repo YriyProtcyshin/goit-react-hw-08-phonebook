@@ -1,5 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { Grid, Avatar } from '@mui/material';
@@ -26,15 +26,6 @@ export const ContactsItem = ({ filteredContact, handleDelete }) => {
               {number}
             </Grid>
             <Grid item xs={5} md={3}>
-              <Button
-                size="small"
-                variant="contained"
-                color="success"
-                startIcon={<EditIcon />}
-                sx={{ marginRight: '10px' }}
-              >
-                Edit
-              </Button>
               <Button
                 size="small"
                 color="error"
