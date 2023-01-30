@@ -8,12 +8,16 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { logOut } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
+import Logout from '@mui/icons-material/Logout';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import Divider from '@mui/material/Divider';
 
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const name = useSelector(state => state.auth.user.name);
   const email = useSelector(state => state.auth.user.email);
-
   const dispatch = useDispatch();
 
   const handleCloseUserMenu = () => {
@@ -30,10 +34,7 @@ export const UserMenu = () => {
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title="User menu">
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar
-              alt={name}
-              src={`https://i.pravatar.cc/150?u=${name}`}
-            />
+            <Avatar alt={name} src={`https://i.pravatar.cc/150?u=${name}`} />
           </IconButton>
         </Tooltip>
         <Menu
@@ -52,16 +53,24 @@ export const UserMenu = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">
-              { name}
-            </Typography>
-             <Typography textAlign="center">
-              { email}
-            </Typography>
-            <Typography textAlign="center" onClick={handleLogout}>
-              Logout
-            </Typography>
+          <Typography variant="body1" sx={{ pr: 2, pl: 2 }}>
+            <ListItemIcon sx={{ minWidth: '36px' }}>
+              <AccountCircleIcon fontSize="small" />
+            </ListItemIcon>
+            {name}
+          </Typography>
+          <Typography variant="body1" sx={{ pr: 2, pl: 2, pb: 2 }}>
+            <ListItemIcon sx={{ minWidth: '36px' }}>
+              <AlternateEmailIcon fontSize="small" />
+            </ListItemIcon>
+            {email}
+          </Typography>
+          <Divider />
+          <MenuItem onClick={handleLogout}>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
           </MenuItem>
         </Menu>
       </Box>

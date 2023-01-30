@@ -12,10 +12,9 @@ import { useSelector } from 'react-redux';
 
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-
   const contacts = useSelector(state => state.contacts.contacts);
   const countOfContacts = contacts.length;
-  
+
   const handleOpenNavMenu = event => {
     setAnchorElNav(event.currentTarget);
   };

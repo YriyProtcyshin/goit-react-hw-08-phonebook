@@ -31,6 +31,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.error = null;
     },
+
     [refreshUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
@@ -42,9 +43,11 @@ const authSlice = createSlice({
       state.error = null;
     },
     [refreshUser.rejected](state, action) {
+      state.user = { name: null, email: null };
+      state.token = null;
       state.isRefreshing = false;
-      state.error = action.payload
-    }
+      state.error = null;
+    },
   },
 });
 
