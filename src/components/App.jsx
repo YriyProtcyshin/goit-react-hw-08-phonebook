@@ -17,10 +17,15 @@ export const App = () => {
   }, [dispatch]);
 
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const error = useSelector(state => state.auth.error)
+  
+  if (error) {
+    return (<b>{ error}</b>)
+  }
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
-  ) : (
+  ) :  (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route
@@ -47,4 +52,6 @@ export const App = () => {
       />
     </Routes>
   );
+
+
 };

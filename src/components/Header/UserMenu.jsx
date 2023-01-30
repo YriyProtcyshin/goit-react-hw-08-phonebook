@@ -9,11 +9,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { logOut } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 
-const avatar_id = 1234;
-
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const name = useSelector(state => state.auth.user.name);
+  const email = useSelector(state => state.auth.user.email);
 
   const dispatch = useDispatch();
 
@@ -33,7 +32,7 @@ export const UserMenu = () => {
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar
               alt={name}
-              src={`https://i.pravatar.cc/150?u=${avatar_id}`}
+              src={`https://i.pravatar.cc/150?u=${name}`}
             />
           </IconButton>
         </Tooltip>
@@ -54,6 +53,12 @@ export const UserMenu = () => {
           onClose={handleCloseUserMenu}
         >
           <MenuItem onClick={handleCloseUserMenu}>
+            <Typography textAlign="center">
+              { name}
+            </Typography>
+             <Typography textAlign="center">
+              { email}
+            </Typography>
             <Typography textAlign="center" onClick={handleLogout}>
               Logout
             </Typography>

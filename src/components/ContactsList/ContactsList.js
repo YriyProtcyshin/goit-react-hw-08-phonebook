@@ -1,6 +1,6 @@
 import { getAllContacts } from 'redux/contacts/operation';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { Box, Grid, Avatar } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -12,6 +12,8 @@ import { deleteContact } from 'redux//contacts/operation';
 export const Contacts = () => {
   const dispatch = useDispatch();
 
+ 
+
   useEffect(() => {
     dispatch(getAllContacts());
   }, [dispatch]);
@@ -21,6 +23,7 @@ export const Contacts = () => {
 
   const filteredContact = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
+
   );
 
   const handleDelete = id => {
