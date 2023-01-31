@@ -5,7 +5,7 @@ import { FilterField } from '../components/FilterField/FilterField';
 
 export const ContactsPage = () => {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <FilterField />
       <Contacts />
     </Container>

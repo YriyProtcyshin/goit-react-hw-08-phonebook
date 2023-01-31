@@ -9,6 +9,7 @@ import Badge from '@mui/material/Badge';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import css from "./Navigation.module.css"
 
 export const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -74,6 +75,7 @@ export const Navigation = () => {
             component={NavLink}
             to="/"
             onClick={handleCloseNavMenu}
+            className={ css.buttonMenu}
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
             Contacts
@@ -83,7 +85,8 @@ export const Navigation = () => {
           component={NavLink}
           to="/addcontact"
           onClick={handleCloseNavMenu}
-          sx={{ my: 2, color: 'white', display: 'block' }}
+          className={ css.buttonMenu}
+          sx={{ my: 2, color: 'white', display: 'block', ml:"15px" }}
         >
           Add Contacts
         </Button>

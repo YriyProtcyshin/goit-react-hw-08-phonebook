@@ -1,5 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { Grid, Avatar } from '@mui/material';
@@ -7,7 +7,7 @@ import css from './ContactsItem.module.css';
 
 export const ContactsItem = ({ filteredContact, handleDelete }) => {
   const getAvatar = name => {
-    return name.slice(0, 1).toUpperCase() + name.slice(1, 2).toLowerCase();
+    return name.slice(0, 1).toUpperCase();
   };
   return (
     <>
@@ -15,17 +15,21 @@ export const ContactsItem = ({ filteredContact, handleDelete }) => {
         <Paper elevation={2} className={css.item} key={name}>
           <Grid container spacing={1} key={name} sx={{ alignItems: 'center' }}>
             <Grid item xs={1} md={1}>
-              <Avatar className={css.avatar} aria-label="recipe">
+              <Avatar  className={css.avatar} sx={{ bgcolor: "#1976d2" }} aria-label="recipe">
                 {getAvatar(name)}
               </Avatar>
             </Grid>
-            <Grid item xs={3} md={4}>
-              {name}
+            <Grid item xs={5} md={5}>
+              <Typography variant="body1" >
+                {name.toUpperCase()}
+              </Typography>              
             </Grid>
             <Grid item xs={3} md={3}>
-              {number}
+              <Typography variant="body1" >
+                {number}
+              </Typography>              
             </Grid>
-            <Grid item xs={5} md={3}>
+            <Grid item xs={3} md={3} className={css.button}>
               <Button
                 size="small"
                 color="error"

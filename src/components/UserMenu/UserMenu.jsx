@@ -13,6 +13,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import Divider from '@mui/material/Divider';
+import css from "./UserMenu.module.css"
 
 export const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -52,14 +53,15 @@ export const UserMenu = () => {
           }}
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
+          
         >
-          <Typography variant="body1" sx={{ pr: 2, pl: 2 }}>
+          <Typography variant="body1"  className={ css.menuItem}>
             <ListItemIcon sx={{ minWidth: '36px' }}>
               <AccountCircleIcon fontSize="small" />
             </ListItemIcon>
             {name}
           </Typography>
-          <Typography variant="body1" sx={{ pr: 2, pl: 2, pb: 2 }}>
+          <Typography variant="body1" sx={{ pb: 2 }} className={ css.menuItem}>
             <ListItemIcon sx={{ minWidth: '36px' }}>
               <AlternateEmailIcon fontSize="small" />
             </ListItemIcon>
